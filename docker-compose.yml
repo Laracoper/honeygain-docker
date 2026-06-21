@@ -2,6 +2,10 @@ services:
   honeygain:
     image: honeygain/honeygain:latest
     container_name: honeygain_app
+    # Принудительно задаем рабочие DNS-сервера
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     restart: always
     command: -tou-accept -email ${HONEYGAIN_EMAIL} -pass ${HONEYGAIN_PASSWORD} -device ${HONEYGAIN_DEVICE}
     logging:
